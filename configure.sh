@@ -17,7 +17,7 @@ cat << EOF > /usr/local/etc/xray/config.json
 		"loglevel": "none"
 	},
 	"inbounds": [{
-		"port": "$PORT",
+		"port": 3000,
 		"protocol": "vless",
 		"settings": {
 			"clients": [{
