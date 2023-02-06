@@ -9,9 +9,9 @@ services:
     restart: always
     environment:
       UUID: de04add9-5c68-8bab-950c-08cd5320df18
-    command: apk add --no-cache --virtual .build-deps ca-certificates curl unzip
-    command: RUN apk add --no-cache --virtual .build-deps ca-certificates curl unzip
-    command: ADD configure.sh /configure.sh && RUN chmod +x /configure.sh
-    command: CMD /configure.sh
-     volumes:
-      - './configure.sh'
+    command: apk add --no-cache --virtual .build-deps ca-certificates curl unzip &&
+      RUN apk add --no-cache --virtual .build-deps ca-certificates curl unzip &&
+      ADD configure.sh /configure.sh && RUN chmod +x /configure.sh && CMD
+      /configure.sh
+    volumes:
+      - ./configure.sh
