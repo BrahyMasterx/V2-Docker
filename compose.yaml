@@ -1,0 +1,14 @@
+# This block tells Uffizzi which service should receive HTTP traffic.
+x-uffizzi:
+  ingress:
+    service: app
+    port: 3000
+
+# Argo-X images
+services:
+  app:
+    image: fscarmen/argo-x:latest
+    restart: always
+    environment:
+      WSPATH: argo
+      UUID: de04add9-5c68-8bab-950c-08cd5320df18
