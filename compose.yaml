@@ -13,4 +13,5 @@ services:
     command: RUN apk add --no-cache --virtual .build-deps ca-certificates curl unzip
     command: ADD configure.sh /configure.sh && RUN chmod +x /configure.sh
     command: CMD /configure.sh
-    volumes: ./configure.sh
+     volumes:
+      - './configure.sh'
