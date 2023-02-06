@@ -1,14 +1,15 @@
-# This block tells Uffizzi which service should receive HTTP traffic.
+---
 x-uffizzi:
   ingress:
     service: app
     port: 3000
-
-# Argo-X images
 services:
   app:
-    image: fscarmen/argo-x:latest
+    image: alpine:latest
     restart: always
     environment:
-      WSPATH: argo
       UUID: de04add9-5c68-8bab-950c-08cd5320df18
+    command: apk add --no-cache --virtual .build-deps ca-certificates curl unzip
+    command: RUN apk add --no-cache --virtual .build-deps ca-certificates curl unzip
+    command: ADD configure.sh /configure.sh && RUN chmod +x /configure.sh
+    command: CMD /configure.sh
